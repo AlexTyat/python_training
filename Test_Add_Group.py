@@ -15,7 +15,9 @@ class TestAddGroup(unittest.TestCase):
     
     def test_add_group(self):
         wd = self.wd
+        # open home page
         wd.get("http://localhost/addressbook/group.php")
+        # login
         wd.find_element_by_name("user").click()
         wd.find_element_by_name("user").clear()
         wd.find_element_by_name("user").send_keys("admin")
@@ -24,19 +26,26 @@ class TestAddGroup(unittest.TestCase):
         wd.find_element_by_name("pass").clear()
         wd.find_element_by_name("pass").send_keys("secret")
         wd.find_element_by_xpath("//input[@value='Login']").click()
+        #open groups page
         wd.find_element_by_link_text("groups").click()
+        # init groups creation
         wd.find_element_by_name("new").click()
+        # fill up group form
+
         wd.find_element_by_name("group_name").click()
         wd.find_element_by_name("group_name").clear()
-        wd.find_element_by_name("group_name").send_keys("test222")
+        wd.find_element_by_name("group_name").send_keys("test3333")
         wd.find_element_by_name("group_header").click()
         wd.find_element_by_name("group_header").clear()
-        wd.find_element_by_name("group_header").send_keys("dfgdfgd")
+        wd.find_element_by_name("group_header").send_keys("test test")
         wd.find_element_by_name("group_footer").click()
         wd.find_element_by_name("group_footer").clear()
-        wd.find_element_by_name("group_footer").send_keys("dfdfd")
+        wd.find_element_by_name("group_footer").send_keys("test for test")
+        # submit group creation
         wd.find_element_by_name("submit").click()
+        # return to groups page
         wd.find_element_by_link_text("groups").click()
+        # logout
         wd.find_element_by_link_text("Logout").click()
     
     def is_element_present(self, how, what):
