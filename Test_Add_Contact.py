@@ -6,6 +6,7 @@ from selenium.webdriver.support.ui import Select
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 import unittest
+from add_contact import Add_contact
 
 
 class UntitledTestCase(unittest.TestCase):
@@ -16,26 +17,26 @@ class UntitledTestCase(unittest.TestCase):
     def test_untitled_test_case(self):
         wd = self.wd
         self.open_home_page(wd)
-        self.login(wd)
+        self.login(wd, username="admin", password="secret")
         self.open_add_contact(wd)
-        self.create_new_contact(wd)
+        self.create_new_contact(wd, Add_contact(name="Alex", lastname="Tyat", address="12 Nansen road"))
         self.logout(wd)
 
     def logout(self, wd):
         # logout
         wd.find_element_by_link_text("Logout").click()
 
-    def create_new_contact(self, wd):
+    def create_new_contact(self, wd, add_contact,):
         # fill up new contact form
         wd.find_element_by_name("firstname").click()
         wd.find_element_by_name("firstname").clear()
-        wd.find_element_by_name("firstname").send_keys("Alex")
+        wd.find_element_by_name("firstname").send_keys(add_contact.name)
         wd.find_element_by_name("middlename").click()
         wd.find_element_by_name("middlename").clear()
         wd.find_element_by_name("middlename").send_keys("O")
         wd.find_element_by_name("lastname").click()
         wd.find_element_by_name("lastname").clear()
-        wd.find_element_by_name("lastname").send_keys("Tyat")
+        wd.find_element_by_name("lastname").send_keys(add_contact.lastname)
         wd.find_element_by_name("nickname").click()
         wd.find_element_by_name("nickname").clear()
         wd.find_element_by_name("nickname").send_keys("Alex")
@@ -47,7 +48,7 @@ class UntitledTestCase(unittest.TestCase):
         wd.find_element_by_name("company").send_keys("GS")
         wd.find_element_by_name("address").click()
         wd.find_element_by_name("address").clear()
-        wd.find_element_by_name("address").send_keys("11 Nansen road")
+        wd.find_element_by_name("address").send_keys(add_contact.address)
         wd.find_element_by_name("home").click()
         wd.find_element_by_name("home").clear()
         wd.find_element_by_name("home").send_keys("98347974823")
@@ -99,17 +100,17 @@ class UntitledTestCase(unittest.TestCase):
         # submit contact creation
         wd.find_element_by_xpath("(//input[@name='submit'])[2]").click()
 
-    def open_add_contact(self, wd):
+    def open_add_contact(self, wd,):
         # open add contact page
         wd.find_element_by_link_text("add new").click()
 
-    def login(self, wd):
+    def login(self, wd, username, password):
         # Login
         wd.find_element_by_name("user").click()
-        wd.find_element_by_name("user").send_keys("admin")
+        wd.find_element_by_name("user").send_keys(username)
         wd.find_element_by_id("LoginForm").click()
         wd.find_element_by_name("pass").clear()
-        wd.find_element_by_name("pass").send_keys("secret")
+        wd.find_element_by_name("pass").send_keys(password)
         wd.find_element_by_xpath("//input[@value='Login']").click()
 
     def open_home_page(self, wd):
