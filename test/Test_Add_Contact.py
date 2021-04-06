@@ -3,7 +3,7 @@ from selenium import webdriver
 
 import unittest
 #import pytest
-from add_contact import Add_contact
+from model.add_contact import Add_contact
 
 
 class UntitledTestCase(unittest.TestCase):
