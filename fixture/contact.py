@@ -39,7 +39,7 @@ class ContactHelper:
         wd.find_element_by_name("address").send_keys(add_contact.address)
         wd.find_element_by_name("home").click()
         wd.find_element_by_name("home").clear()
-        wd.find_element_by_name("home").send_keys("98347974823")
+        wd.find_element_by_name("home").send_keys("98347974824")
         wd.find_element_by_name("mobile").click()
         wd.find_element_by_name("mobile").clear()
         wd.find_element_by_name("mobile").send_keys("3498374328")
