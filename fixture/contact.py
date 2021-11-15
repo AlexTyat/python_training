@@ -60,7 +60,7 @@ class ContactHelper:
         wd.find_element_by_name("email3").send_keys("alex3@mail.ru")
         wd.find_element_by_name("homepage").click()
         wd.find_element_by_name("homepage").clear()
-        wd.find_element_by_name("homepage").send_keys("alex.site.com")
+        wd.find_element_by_name("homepage").send_keys("alex1.site.com")
         wd.find_element_by_name("bday").click()
         #Select(wd.find_element_by_name("bday")).select_by_visible_text("15")
         #wd.find_element_by_xpath("//option[@value='15']").click()
